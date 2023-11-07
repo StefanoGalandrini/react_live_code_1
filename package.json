@@ -1,0 +1,31 @@
+{
+  "name": "lc-node-intro",
+  "version": "1.0.0",
+  "description": "Primo progetto con node ed npm",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "app": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Florian-Bool-React-1/lc-node-intro.git"
+  },
+  "keywords": [
+    "node",
+    "npm",
+    "npx",
+    "vaiabili_ambiente",
+    "argomenti"
+  ],
+  "author": "Leica Florian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Florian-Bool-React-1/lc-node-intro/issues"
+  },
+  "homepage": "https://github.com/Florian-Bool-React-1/lc-node-intro#readme",
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
+  }
+}
