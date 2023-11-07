@@ -1,3 +1,5 @@
+// importo la libreria http necessaria per creare un server
+// Libreria esiste già nativamente in Node
 const http = require("http");
 
 // importo la libreria dotenv
@@ -8,19 +10,56 @@ dotenv.config();
 
 // require("dotenv").config();
 
-const port = process.env.PORT || 3000;
+// Di default usiamo la 3000
+// Siccome la 3000 potrebbe essere in uso da altri programmi
+// prevediamo la possibilità di passare la porta come variabile d'ambiente
+/**
+ * @type {number}
+ */
+let port = +process.env.PORT || 3000;
 
-// Creo il server
+
+/**
+ * 
+ * @param {*} res 
+ * @param {*} content 
+ */
+function htmlResponse(res, content) {
+  res.writeHead(200, { "Content-Type": "text/html" });
+  res.end(content);
+}
+
+/**
+ * Restituisce una risposta in formato JSON
+ * 
+ * @param {http.ServerResponse} res 
+ * @param {any} content 
+ */
+function jsonResponse(res, content) {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(
+    JSON.stringify(content)
+  );
+}
+
+/**
+ * Creo il server
+ * la callback function verrà invocata ogni volta che arriva una richiesta
+ * sulla porta specificata
+ * 
+ * @param {http.ClientRequest} req
+ * @param {http.ServerResponse} res
+ */
 const server = http.createServer(function (req, res) {
   // Devo specificare come il server deve rispondere
-  // res.writeHead(200, { "Content-Type": "text/html" });
-  res.end(`<h1>Hello Classe #1 Node / React!</h1>
-  PIN: ${process.env.PIN}<br>
-  CVV: ${process.env.CVV}
-  `);
-})
+  // Invio dati in formato HTML
+  htmlResponse(res, "<h1>Hello World</h1>");
+
+  // Invio dati in formato JSON
+  jsonResponse(res, { message: "Hello World" });
+});
 
 // avvio il server
 server.listen(port, function () {
-    console.log("Server is running on port: " + port)
-})
+  console.log("Server is running on http://localhost:" + port);
+});
