@@ -63,3 +63,10 @@ const server = http.createServer(function (req, res) {
 server.listen(port, function () {
   console.log("Server is running on http://localhost:" + port);
 });
+/* 
+server.on("error", function (error) {
+  server.close();
+  server.listen(port + 1, function () {
+  // console.error("Error starting server", error);
+  });
+}) */
